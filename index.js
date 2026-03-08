@@ -12,17 +12,21 @@ let isClientReady = false;
 // =========================================================
 // CONFIGURAÇÃO DO WHATSAPP
 // =========================================================
+const path = require('path');
+
 const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: {
         headless: true,
-        // REMOVA A LINHA executablePath: '/usr/bin/google-chrome-stable'
+        // Procura o executável dentro da pasta .cache que criamos no build
+        executablePath: path.join(__dirname, '.cache', 'puppeteer', 'chrome', 'linux-146.0.7680.31', 'chrome-linux64', 'chrome'), 
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
             '--disable-dev-shm-usage',
-            '--shm-size=1gb' // Ajuda na performance do Render
-        ],
+            '--single-process',
+            '--no-zygote'
+        ]
     }
 });
 
@@ -113,6 +117,7 @@ app.listen(PORT, '0.0.0.0', () => {
     console.log(`Servidor rodando na porta ${PORT}`);
 
 });
+
 
 
 
