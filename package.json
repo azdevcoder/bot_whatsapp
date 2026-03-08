@@ -1,7 +1,6 @@
 {
   "name": "azdev-bot-whatsapp",
   "version": "1.0.0",
-  "description": "Bot WhatsApp AzDev Coder",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
