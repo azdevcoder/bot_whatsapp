@@ -16,14 +16,13 @@ const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: {
         headless: true,
-        executablePath: '/usr/bin/google-chrome-stable', // Caminho padrão do Google Chrome no Linux do Render
+        // REMOVA A LINHA executablePath: '/usr/bin/google-chrome-stable'
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
             '--disable-dev-shm-usage',
-            '--single-process',
-            '--no-zygote'
-        ]
+            '--shm-size=1gb' // Ajuda na performance do Render
+        ],
     }
 });
 
@@ -114,5 +113,6 @@ app.listen(PORT, '0.0.0.0', () => {
     console.log(`Servidor rodando na porta ${PORT}`);
 
 });
+
 
 
