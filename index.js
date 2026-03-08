@@ -15,21 +15,16 @@ const client = new Client({
     authStrategy: new LocalAuth({
         clientId: "azdev-session"
     }),
-    // Aumentamos o tempo de espera para o pareamento (60 segundos)
-    authTimeoutMs: 60000, 
-    qrMaxRetries: 10,
     puppeteer: {
         headless: true,
+        executablePath: '/usr/bin/google-chrome', // Caminho padrão no Docker do Puppeteer
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
-            '--disable-dev-shm-usage',
-            '--single-process',
-            '--no-zygote'
+            '--disable-dev-shm-usage'
         ],
     }
 });
-
 // Eventos do WhatsApp
 client.on('qr', (qr) => {
     console.log('--- NOVO QR CODE GERADO ---');
@@ -127,4 +122,5 @@ app.listen(PORT, '0.0.0.0', () => {
         console.error('Falha crítica ao inicializar cliente WhatsApp:', err);
     });
 });
+
 
