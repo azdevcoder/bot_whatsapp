@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Bot de atendimento humanizado",
   "main": "index.js",
-  "scripts": {
-    "start": "node index.js",
-    "build": "npm install && npx puppeteer browsers install chrome"
-  },
+ "scripts": {
+  "start": "node index.js",
+  "build": "npm install" 
+},
   "dependencies": {
     "whatsapp-web.js": "^1.23.0",
     "qrcode-terminal": "^0.12.0",
