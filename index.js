@@ -16,13 +16,14 @@ const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: {
         headless: true,
+        // REMOVA a linha executablePath: '/usr/bin/google-chrome-stable'
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
             '--disable-dev-shm-usage',
-            '--single-process'
-        ],
-        // Removemos o executablePath fixo para ele usar o que foi instalado no build
+            '--single-process',
+            '--no-zygote'
+        ]
     }
 });
 
@@ -113,3 +114,4 @@ app.listen(PORT, '0.0.0.0', () => {
     console.log(`Servidor rodando na porta ${PORT}`);
 
 });
+
