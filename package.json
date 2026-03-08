@@ -1,21 +1,16 @@
 {
-  "name": "bot_whatsapp",
+  "name": "bot-whatsapp",
   "version": "1.0.0",
-  "description": "",
+  "description": "Bot de atendimento humanizado",
   "main": "index.js",
- "scripts": {
-  "start": "node index.js",
-  "build": "npm install && npx puppeteer browsers install chrome"
-}
+  "scripts": {
+    "start": "node index.js",
+    "build": "npm install && npx puppeteer browsers install chrome"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
-    "cors": "^2.8.6",
-    "express": "^5.2.1",
+    "whatsapp-web.js": "^1.23.0",
     "qrcode-terminal": "^0.12.0",
-    "whatsapp-web.js": "^1.34.6"
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
   }
 }
