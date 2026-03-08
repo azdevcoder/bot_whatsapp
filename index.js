@@ -20,13 +20,9 @@ const client = new Client({
             '--no-sandbox',
             '--disable-setuid-sandbox',
             '--disable-dev-shm-usage',
-            '--disable-accelerated-2d-canvas',
-            '--no-first-run',
-            '--no-zygote',
-            '--single-process', // Importante para economizar memória no Render
-            '--disable-gpu'
+            '--single-process'
         ],
-        executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || null, // O Render vai preencher isso
+        // Removemos o executablePath fixo para ele usar o que foi instalado no build
     }
 });
 
@@ -115,4 +111,5 @@ client.initialize();
 const PORT = process.env.PORT || 3000; // Usa a porta do Render ou 3000 localmente
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Servidor rodando na porta ${PORT}`);
+
 });
