@@ -16,7 +16,7 @@ const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: {
         headless: true,
-        // REMOVA a linha executablePath: '/usr/bin/google-chrome-stable'
+        executablePath: '/usr/bin/google-chrome-stable', // Caminho padrão do Google Chrome no Linux do Render
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
@@ -114,4 +114,5 @@ app.listen(PORT, '0.0.0.0', () => {
     console.log(`Servidor rodando na porta ${PORT}`);
 
 });
+
 
