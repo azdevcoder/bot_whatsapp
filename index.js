@@ -17,11 +17,13 @@ const client = new Client({
     }),
     puppeteer: {
         headless: true,
-        executablePath: '/usr/bin/google-chrome', // Caminho padrão no Docker do Puppeteer
+        // Remova qualquer executablePath fixo. O Puppeteer encontrará o que foi baixado no build.
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
-            '--disable-dev-shm-usage'
+            '--disable-dev-shm-usage',
+            '--no-zygote',
+            '--single-process'
         ],
     }
 });
@@ -122,5 +124,6 @@ app.listen(PORT, '0.0.0.0', () => {
         console.error('Falha crítica ao inicializar cliente WhatsApp:', err);
     });
 });
+
 
 
