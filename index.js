@@ -15,17 +15,17 @@ const client = new Client({
     authStrategy: new LocalAuth({
         clientId: "azdev-session"
     }),
+    // Aumentamos o tempo de espera para o pareamento (60 segundos)
+    authTimeoutMs: 60000, 
+    qrMaxRetries: 10,
     puppeteer: {
         headless: true,
-        // No Render, NÃO definimos executablePath manualmente. 
-        // Deixamos o Puppeteer encontrar o Chrome que ele instalou no build.
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
             '--disable-dev-shm-usage',
-            '--disable-setuid-sandbox',
-            '--no-zygote',
-            '--single-process'
+            '--single-process',
+            '--no-zygote'
         ],
     }
 });
@@ -127,3 +127,4 @@ app.listen(PORT, '0.0.0.0', () => {
         console.error('Falha crítica ao inicializar cliente WhatsApp:', err);
     });
 });
+
